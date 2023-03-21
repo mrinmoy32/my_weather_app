@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+        <img class="mb-6 mx-2" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQkeHpCcOHUKq_Gw9h5YvtaOf94SsX9zleWdVTVVz5s5Db24jjrE69AI2jNFNxh3tYWby7a5dUkIGmcwtsP0LTLoOhHd2BXCMWVinllRGjf-p_iqamLloWnNNOlhf6hpTYjDDjFt0d_1ZStSe2uQr4ZHN0rep6mqoBKTqfTaCgZm9dJhBgCHNszI64/s320/cloudy.png" alt="" width="33" height="33">
+          <a class="navbar-brand text-success" href="#">My Weather App</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Select City
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item text-primary" href="#">Kolkata</a></li>
+                  <li><a class="dropdown-item text-primary" href="#">Delhi</a></li>
+                  <!-- <li><hr class="dropdown-divider"></li> -->
+                  <li><a class="dropdown-item text-primary" href="#">Mumbai</a></li>
+                  <li><a class="dropdown-item text-primary" href="#">Chennai</a></li>
+                  <li><a class="dropdown-item text-primary" href="#">Hyderabad</a></li>
+                </ul>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link disabled">Disabled</a>
+              </li> -->
+            </ul>
+            
+              <input class="form-control me-2" id="formElement" type="search" placeholder="Search City" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit" onclick="addRecord()">Search</button>
+            
+          </div>
+        </div>
+      </nav>
+      <div class="container py-3">
+        <header>     
+          <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <h1 class="display-4 fw-normal" id="city-line">Weather</h1>
+            <p class="fs-5 text-muted">Quickly find weathers of different cities with just a click.</p>
+          </div>
+        </header>
+      
+        <main>
+          <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                <div class="card-header py-3 text-bg-primary border-primary">
+                  <h4 class="my-0 fw-normal">Temperature</h4>
+                </div>
+                <div class="card-body">
+                  <h1 class="card-title pricing-card-title"><span class="span-parameter">0</span><small class="text-muted fw-light">&#176C</small></h1>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                <div class="card-header py-3 text-bg-primary border-primary">
+                  <h4 class="my-0 fw-normal">Humidity</h4>
+                </div>
+                <div class="card-body">
+                  <h1 class="card-title pricing-card-title"><span class="span-parameter">15</span><small class="text-muted fw-light">%</small></h1>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                <div class="card-header py-3 text-bg-primary border-primary">
+                  <h4 class="my-0 fw-normal">Wind Speed</h4>
+                </div>
+                <div class="card-body">
+                  <h1 class="card-title pricing-card-title"><span class="span-parameter">15</span><small class="text-muted fw-light">km/h</small></h1>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <h2 class="display-6 text-center mb-4">Weather of other common places</h2>
+      
+          <div class="table-responsive">
+            <table class="table table-hover text-center">
+              <thead class="table-info">
+                <tr>
+                  <th style="width: 14%;"></th>
+                  <th class="fields" style="width: auto;">temp</th>
+                <th class="fields" style="width: auto;">feels_like</th>
+                <th class="fields" style="width: auto;">max_temp</th>
+                <th class="fields" style="width: auto;">min_temp</th>
+                <th class="fields" style="width: auto;">humidity</th>
+                <th class="fields" style="width: auto;">wind_degrees</th>
+                <th class="fields" style="width: auto;">wind_speed</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row" class="text-start">Dhaka</th>
+                  <td id="Dhaka/temp"></td>
+                  <td id="Dhaka/feels_like"></td>
+                  <td id="Dhaka/max_temp"></td>
+                  <td id="Dhaka/min_temp"></td>
+                  <td id="Dhaka/humidity"></td>
+                  <td id="Dhaka/wind_degrees"></td>
+                  <td id="Dhaka/wind_speed"></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-start">Delhi</th>
+                  <td id="Delhi/temp"></td>
+                  <td id="Delhi/feels_like"></td>
+                  <td id="Delhi/max_temp"></td>
+                  <td id="Delhi/min_temp"></td>
+                  <td id="Delhi/humidity"></td>
+                  <td id="Delhi/wind_degrees"></td>
+                  <td id="Delhi/wind_speed"></td>
+                </tr>
+
+                <tr>
+                  <th scope="row" class="text-start">London</th>
+                  <td id="London/temp"></td>
+                  <td id="London/feels_like"></td>
+                  <td id="London/max_temp"></td>
+                  <td id="London/min_temp"></td>
+                  <td id="London/humidity"></td>
+                  <td id="London/wind_degrees"></td>
+                  <td id="London/wind_speed"></td>
+                </tr>
+                
+                <tr>
+                  <th scope="row" class="text-start">Washington</th>
+                  <td id="Washington/temp"></td>
+                  <td id="Washington/feels_like"></td>
+                  <td id="Washington/max_temp"></td>
+                  <td id="Washington/min_temp"></td>
+                  <td id="Washington/humidity"></td>
+                  <td id="Washington/wind_degrees"></td>
+                  <td id="Washington/wind_speed"></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-start">Paris</th>
+                  <td id="Paris/temp"></td>
+                  <td id="Paris/feels_like"></td>
+                  <td id="Paris/max_temp"></td>
+                  <td id="Paris/min_temp"></td>
+                  <td id="Paris/humidity"></td>
+                  <td id="Paris/wind_degrees"></td>
+                  <td id="Paris/wind_speed"></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-start">Shanghai</th>
+                  <td id="Shanghai/temp"></td>
+                  <td id="Shanghai/feels_like"></td>
+                  <td id="Shanghai/max_temp"></td>
+                  <td id="Shanghai/min_temp"></td>
+                  <td id="Shanghai/humidity"></td>
+                  <td id="Shanghai/wind_degrees"></td>
+                  <td id="Shanghai/wind_speed"></td>
+                </tr>
+
+                <!-- <tr>
+                  <th scope="row" class="text-start">Washington</th>
+                  <td></td>
+                  <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+                  <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-start">Paris</th>
+                  <td></td>
+                  <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+                  <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-start">Shanghai</th>
+                  <td></td>
+                  <td></td>
+                  <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+        </main>
+      
+        <footer class="pt-4 my-md-5 pt-md-5 border-top">
+          <div class="row">
+            <div class="col-12 col-md">
+              <img class="mb-2" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQkeHpCcOHUKq_Gw9h5YvtaOf94SsX9zleWdVTVVz5s5Db24jjrE69AI2jNFNxh3tYWby7a5dUkIGmcwtsP0LTLoOhHd2BXCMWVinllRGjf-p_iqamLloWnNNOlhf6hpTYjDDjFt0d_1ZStSe2uQr4ZHN0rep6mqoBKTqfTaCgZm9dJhBgCHNszI64/s320/cloudy.png" alt="" width="33" height="33">
+
+              
+              <small class="d-block mb-3 text-muted">© 2023</small>
+            </div>
+            <div class="col-6 col-md">
+              <h5>Features</h5>
+              <ul class="list-unstyled text-small">
+                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
+                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
+                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
+                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
+                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
+                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
+              </ul>
+            </div>
+            <div class="col-6 col-md">
+              <h5>Resources</h5>
+              <ul class="list-unstyled text-small">
+                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
+                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
+                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
+                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+              </ul>
+            </div>
+            <div class="col-6 col-md">
+              <h5>About</h5>
+              <ul class="list-unstyled text-small">
+                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
+                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
+                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
+                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
