@@ -1,0 +1,1 @@
+Created this folder to work with git when something changes in the working directory
