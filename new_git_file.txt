@@ -1,4 +1,4 @@
-Created this file to work with git when something changes in the working directory.
+I have Created this file to work with git when something changes in the working directory.
 
 modfications to track chnages. more changes
 
