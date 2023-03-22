@@ -1,3 +1,5 @@
-Created this folder to work with git when something changes in the working directory.
+Created this file to work with git when something changes in the working directory.
 
 modfications to track chnages. more changes
+
+new modification to view changes in file with diff
